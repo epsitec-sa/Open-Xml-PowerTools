@@ -25,7 +25,7 @@
     <ProjectReference Include="..\OpenXmlPowerTools\OpenXmlPowerTools.csproj" />
   </ItemGroup>
   
-  <ItemGroup Condition=" '$(TargetFramework)' == '$(FullTargetFramework)' ">
+  <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
     <Reference Include="WindowsBase" />
   </ItemGroup>
 
