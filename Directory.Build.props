@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <!--
+    warning CA1416: This call site is reachable on all platforms. ... is only supported on: 'windows' 6.1 and later.
+    (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1416)
+    -->
+    <NoWarn>CA1416;$(NoWarn)</NoWarn>
+
     <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)\rules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 </Project>
