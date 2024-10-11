@@ -26,7 +26,7 @@ namespace OxPt
         {
             string name1 = "PB001-Input1.pptx";
             string name2 = "PB001-Input2.pptx";
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             FileInfo source1Pptx = new FileInfo(Path.Combine(sourceDir.FullName, name1));
             FileInfo source2Pptx = new FileInfo(Path.Combine(sourceDir.FullName, name2));
 
@@ -44,7 +44,7 @@ namespace OxPt
         public void PB002_Formatting()
         {
             string name2 = "PB001-Input2.pptx";
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             FileInfo source2Pptx = new FileInfo(Path.Combine(sourceDir.FullName, name2));
 
             List<SlideSource> sources = null;
@@ -61,7 +61,7 @@ namespace OxPt
         {
             string name1 = "PB001-Input1.pptx";
             string name2 = "PB001-Input3.pptx";
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             FileInfo source1Pptx = new FileInfo(Path.Combine(sourceDir.FullName, name1));
             FileInfo source2Pptx = new FileInfo(Path.Combine(sourceDir.FullName, name2));
 
@@ -80,7 +80,7 @@ namespace OxPt
         {
             string name1 = "PB001-Input1.pptx";
             string name2 = "PB001-Input3.pptx";
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             FileInfo source1Pptx = new FileInfo(Path.Combine(sourceDir.FullName, name1));
             FileInfo source2Pptx = new FileInfo(Path.Combine(sourceDir.FullName, name2));
 
@@ -99,7 +99,7 @@ namespace OxPt
         {
             string name1 = "PB001-Input1.pptx";
             string name2 = "PB001-Input3.pptx";
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             FileInfo source1Pptx = new FileInfo(Path.Combine(sourceDir.FullName, name1));
             FileInfo source2Pptx = new FileInfo(Path.Combine(sourceDir.FullName, name2));
 
@@ -122,7 +122,7 @@ namespace OxPt
         public void PB006_VideoFormats()
         {
             // This presentation contains videos with content types video/mp4, video/quicktime, video/unknown, video/x-ms-asf, and video/x-msvideo.
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             FileInfo sourcePptx = new FileInfo(Path.Combine(sourceDir.FullName, "PP006-Videos.pptx"));
 
             var oldMediaDataContentTypes = GetMediaDataContentTypes(sourcePptx);

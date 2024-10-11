@@ -126,7 +126,7 @@ namespace OxPt
 
         public void WC001_Consolidate(string testId, string originalName, string revisedDocumentsXml)
         {
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             FileInfo originalDocx = new FileInfo(Path.Combine(sourceDir.FullName, originalName));
 
             var rootTempDir = TestUtil.TempDir;
@@ -345,7 +345,7 @@ namespace OxPt
 
         public void WC002_Consolidate_Bulk_Test(string testId, string name1, string name2)
         {
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             FileInfo source1Docx = new FileInfo(Path.Combine(sourceDir.FullName, name1));
             FileInfo source2Docx = new FileInfo(Path.Combine(sourceDir.FullName, name2));
 
@@ -603,7 +603,7 @@ namespace OxPt
 
         public void WC003_Compare(string testId, string name1, string name2, int revisionCount)
         {
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             FileInfo source1Docx = new FileInfo(Path.Combine(sourceDir.FullName, name1));
             FileInfo source2Docx = new FileInfo(Path.Combine(sourceDir.FullName, name2));
 
@@ -890,7 +890,7 @@ namespace OxPt
 
         public void WC004_Compare_To_Self(string testId, string name)
         {
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             FileInfo sourceDocx = new FileInfo(Path.Combine(sourceDir.FullName, name));
 
             var rootTempDir = TestUtil.TempDir;
@@ -926,7 +926,7 @@ namespace OxPt
 
         public void WC005_Compare_CaseInsensitive(string testId, string name1, string name2, int revisionCount)
         {
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             FileInfo source1Docx = new FileInfo(Path.Combine(sourceDir.FullName, name1));
             FileInfo source2Docx = new FileInfo(Path.Combine(sourceDir.FullName, name2));
 

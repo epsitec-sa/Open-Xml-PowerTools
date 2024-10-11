@@ -57,7 +57,7 @@ namespace OxPt
 
         public void SH005_ConvertSheet(string name, string sheetName)
         {
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             FileInfo sourceXlsx = new FileInfo(Path.Combine(sourceDir.FullName, name));
 
             var sourceCopiedToDestXlsx = new FileInfo(Path.Combine(TestUtil.TempDir.FullName, sourceXlsx.Name.Replace(".xlsx", "-1-Source.xlsx")));
@@ -116,7 +116,7 @@ namespace OxPt
         
         public void SH004_ConvertRange(string name, string sheetName, string range)
         {
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             FileInfo sourceXlsx = new FileInfo(Path.Combine(sourceDir.FullName, name));
 
             var sourceCopiedToDestXlsx = new FileInfo(Path.Combine(TestUtil.TempDir.FullName, sourceXlsx.Name.Replace(".xlsx", "-1-Source.xlsx")));
@@ -147,7 +147,7 @@ namespace OxPt
         
         public void SH003_ConvertTable(string name, string tableName)
         {
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             FileInfo sourceXlsx = new FileInfo(Path.Combine(sourceDir.FullName, name));
 
             var sourceCopiedToDestXlsx = new FileInfo(Path.Combine(TestUtil.TempDir.FullName, sourceXlsx.Name.Replace(".xlsx", "-1-Source.xlsx")));
@@ -167,7 +167,7 @@ namespace OxPt
         [InlineData("Spreadsheet.xlsx", 2)]
         public void SH002_SheetNames(string name, int numberOfSheets)
         {
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             FileInfo sourceXlsx = new FileInfo(Path.Combine(sourceDir.FullName, name));
             using (SpreadsheetDocument sDoc = SpreadsheetDocument.Open(sourceXlsx.FullName, true))
             {
@@ -181,7 +181,7 @@ namespace OxPt
         [InlineData("SH002-TwoTablesTwoSheets.xlsx", 2)]
         public void SH001_TableNames(string name, int numberOfTables)
         {
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             FileInfo sourceXlsx = new FileInfo(Path.Combine(sourceDir.FullName, name));
             using (SpreadsheetDocument sDoc = SpreadsheetDocument.Open(sourceXlsx.FullName, true))
             {

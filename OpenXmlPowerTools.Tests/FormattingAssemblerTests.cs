@@ -52,7 +52,7 @@ namespace OxPt
         {
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             // Load the source document
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             FileInfo sourceDocxFi = new FileInfo(Path.Combine(sourceDir.FullName, src));
             WmlDocument wmlSourceDocument = new WmlDocument(sourceDocxFi.FullName);
 

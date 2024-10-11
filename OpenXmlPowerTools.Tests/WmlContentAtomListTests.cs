@@ -91,7 +91,7 @@ namespace OxPt
         [InlineData("HC009-Test-04.docx")]
         public void CA002_Annotations(string name)
         {
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             FileInfo sourceDocx = new FileInfo(Path.Combine(sourceDir.FullName, name));
 
 #if COPY_FILES_FOR_DEBUGGING
@@ -120,7 +120,7 @@ namespace OxPt
 
         public void CA003_ContentAtoms_Throws(string name)
         {
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             FileInfo sourceDocx = new FileInfo(Path.Combine(sourceDir.FullName, name));
             var thisGuid = Guid.NewGuid().ToString().Replace("-", "");
             var sourceCopiedToDestDocx = new FileInfo(Path.Combine(TestUtil.TempDir.FullName, sourceDocx.Name.Replace(".docx", string.Format("-{0}-1-Source.docx", thisGuid))));

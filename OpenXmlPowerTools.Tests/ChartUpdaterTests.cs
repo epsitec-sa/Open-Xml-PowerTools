@@ -45,7 +45,7 @@ namespace OxPt
 
         public void CU001(string name)
         {
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             FileInfo templateFile = new FileInfo(Path.Combine(sourceDir.FullName, name));
 
             if (templateFile.Extension.ToLower() == ".docx")

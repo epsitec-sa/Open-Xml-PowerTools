@@ -127,7 +127,7 @@ namespace OxPt
         
         public void CF002(string name, string sheetName, string range, string expected, string expectedColor)
         {
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             FileInfo sourceXlsx = new FileInfo(Path.Combine(sourceDir.FullName, name));
 
             var sourceCopiedToDestXlsx = new FileInfo(Path.Combine(TestUtil.TempDir.FullName, sourceXlsx.Name.Replace(".xlsx", "-1-Source.xlsx")));

@@ -305,7 +305,7 @@ namespace OxPt
             string[] htmlFilter = null;
 #endif
 
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             var sourceHtmlFi = new FileInfo(Path.Combine(sourceDir.FullName, name));
             var sourceImageDi = new DirectoryInfo(Path.Combine(sourceDir.FullName, sourceHtmlFi.Name.Replace(".html", "_files")));
 
@@ -392,7 +392,7 @@ namespace OxPt
         public void HW004(string name)
         {
 
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             var sourceHtmlFi = new FileInfo(Path.Combine(sourceDir.FullName, name));
             var sourceImageDi = new DirectoryInfo(Path.Combine(sourceDir.FullName, sourceHtmlFi.Name.Replace(".html", "_files")));
 

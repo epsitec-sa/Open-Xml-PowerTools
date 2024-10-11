@@ -26,7 +26,7 @@ namespace OxPt
 
         public void RA001(string name)
         {
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             FileInfo sourceDocx = new FileInfo(Path.Combine(sourceDir.FullName, name));
 
             WmlDocument notAccepted = new WmlDocument(sourceDocx.FullName);

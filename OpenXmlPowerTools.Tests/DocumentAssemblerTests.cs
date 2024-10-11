@@ -119,7 +119,7 @@ namespace OxPt
         
         public void DA101(string name, string data, bool err)
         {
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             FileInfo templateDocx = new FileInfo(Path.Combine(sourceDir.FullName, name));
             FileInfo dataFile = new FileInfo(Path.Combine(sourceDir.FullName, data));
 
@@ -175,7 +175,7 @@ namespace OxPt
         [InlineData("DA024-TrackedRevisions.docx", "DA-Data.xml")]
         public void DA102_Throws(string name, string data)
         {
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             FileInfo templateDocx = new FileInfo(Path.Combine(sourceDir.FullName, name));
             FileInfo dataFile = new FileInfo(Path.Combine(sourceDir.FullName, data));
 
@@ -194,7 +194,7 @@ namespace OxPt
         [InlineData("DA025-TemplateDocument.docx", "DA-Data.xml", false)]
         public void DA103_UseXmlDocument(string name, string data, bool err)
         {
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             FileInfo templateDocx = new FileInfo(Path.Combine(sourceDir.FullName, name));
             FileInfo dataFile = new FileInfo(Path.Combine(sourceDir.FullName, data));
 

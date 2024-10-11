@@ -37,7 +37,7 @@ namespace OxPt
             // TODO: Do we need to keep the revision count parameter?
             Assert.Equal(1, revisionCount);
 
-            DirectoryInfo sourceDir = new DirectoryInfo("../../../../TestFiles/");
+            DirectoryInfo sourceDir = TestUtil.SourceDir;
             FileInfo source1Docx = new FileInfo(Path.Combine(sourceDir.FullName, name1));
             FileInfo source2Docx = new FileInfo(Path.Combine(sourceDir.FullName, name2));
 

@@ -2,12 +2,10 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 
 namespace OpenXmlPowerTools
 {
@@ -27,6 +25,7 @@ namespace OpenXmlPowerTools
             }
         }
 
+        private static DirectoryInfo s_SourceDir = null;
         private static DirectoryInfo s_TempDir = null;
         public static DirectoryInfo TempDir
         {
@@ -41,6 +40,22 @@ namespace OpenXmlPowerTools
                     s_TempDir = new DirectoryInfo(Path.Combine(".", tempDirName));
                     s_TempDir.Create();
                     return s_TempDir;
+                }
+            }
+        }
+        public static DirectoryInfo SourceDir
+        {
+            get
+            {
+                if (s_SourceDir != null)
+                {
+                    return s_SourceDir;
+                }
+                else
+                {
+                    var root = GetDirectoryNameOfFolderAbove (Assembly.GetExecutingAssembly().Location, "open-xml-powertools");
+                    s_SourceDir = new DirectoryInfo (Path.Combine (root, "TestFiles"));
+                    return s_SourceDir;
                 }
             }
         }
@@ -68,5 +83,25 @@ namespace OpenXmlPowerTools
         {
             Process.Start(di.FullName);
         }
+
+        public static string GetDirectoryNameOfFolderAbove(string startFromDir, string folderName)
+        {
+            var currentDir = Directory.GetParent (startFromDir);
+            while (currentDir != null)
+            {
+                var name = Directory
+                    .EnumerateDirectories (currentDir.FullName, folderName)
+                    .SingleOrDefault ();
+
+                if (name != null)
+                {
+                    return name;
+                }
+
+                currentDir = Directory.GetParent (currentDir.FullName);
+            }
+            return null;
+        }
+
     }
 }
