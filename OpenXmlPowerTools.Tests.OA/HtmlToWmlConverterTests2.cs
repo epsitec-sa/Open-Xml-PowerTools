@@ -111,14 +111,14 @@ namespace OxPt
                     html = HtmlToWmlReadAsXElement.ReadAsXElement(sourceCopiedToDestHtmlFi);
                     break;
                 }
-                catch (XmlException e)
+                catch (XmlException)
                 {
-                    throw e;
+                    throw;
                 }
-                catch (IOException i)
+                catch (IOException)
                 {
                     if (++cnt == 20)
-                        throw i;
+                        throw;
                     System.Threading.Thread.Sleep(50);
                     continue;
                 }
@@ -547,7 +547,7 @@ BDO[DIR=""rtl""] { direction: rtl; unicode-bidi: bidi-override }
         //center { text-align: center }
         //:link, :visited { text-decoration: underline }
         //:focus { outline: thin dotted invert }
-        ///* Begin bidirectionality settings (do not change) */
+        //// Begin bidirectionality settings (do not change)
         //BDO[DIR=""ltr""] { direction: ltr; unicode-bidi: bidi-override }
         //BDO[DIR=""rtl""] { direction: rtl; unicode-bidi: bidi-override }
         //*[DIR=""ltr""] { direction: ltr; unicode-bidi: embed }
