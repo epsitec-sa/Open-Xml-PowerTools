@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
 <Project>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('$(MSBuildThisFile)', '$(MSBuildThisFileDirectory)../../'))" />
+
   <ItemGroup>
     <AdditionalFiles Include="$(MSBuildThisFileDirectory)\stylecop.json" />
 
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+    <PackageReference Include="StyleCop.Analyzers">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
   </ItemGroup>
