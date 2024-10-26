@@ -1,11 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+#if NET462 && !ELIDE_XUNIT_TESTS
+
 using System.IO;
 using System.Xml.Linq;
 using Xunit;
-
-#if !ELIDE_XUNIT_TESTS
 
 namespace OpenXmlPowerTools.Tests
 {

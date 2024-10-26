@@ -1,9 +1,10 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+#if NET462
+
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Xml;
@@ -11,7 +12,6 @@ using System.Xml.Linq;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using DocumentFormat.OpenXml.Validation;
-using OpenXmlPowerTools;
 using System.Text;
 using DocumentFormat.OpenXml;
 using System.Drawing.Imaging;
@@ -677,3 +677,5 @@ AAsACwDBAgAAbCwAAAAA";
         }
     }
 }
+
+#endif

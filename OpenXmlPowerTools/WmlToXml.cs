@@ -9,6 +9,8 @@
 // Twitter: @EricWhiteDev
 // Email: eric@ericwhite.com
 
+#if NET462
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +19,6 @@ using System.Text.RegularExpressions;
 using System.IO;
 using System.Xml.Linq;
 using DocumentFormat.OpenXml.Packaging;
-using System.Drawing;
 
 namespace OpenXmlPowerTools
 {
@@ -814,7 +815,7 @@ namespace OpenXmlPowerTools
                         .Element(W.t);
 
                     var lastRunText = lastRunTextElement.Value;
-                    
+
                     var nextRun = lastRun
                         .ElementsAfterSelf(W.r)
                         .FirstOrDefault(r => r.Element(W.t) != null);
@@ -2096,3 +2097,5 @@ namespace OpenXmlPowerTools
         }
     }
 }
+
+#endif

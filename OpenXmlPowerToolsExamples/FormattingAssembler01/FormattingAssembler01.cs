@@ -1,6 +1,8 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+#if NET462
+
 using System;
 using System.IO;
 using DocumentFormat.OpenXml.Packaging;
@@ -45,3 +47,19 @@ namespace FormattingAssembler01
         }
     }
 }
+
+#else
+
+using System;
+
+namespace OpenXmlPowerTools;
+
+internal static class Program
+{
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("This sample is only supported on Windows.");
+    }
+}
+
+#endif

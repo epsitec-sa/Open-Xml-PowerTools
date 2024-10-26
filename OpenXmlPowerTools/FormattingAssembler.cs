@@ -4,10 +4,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Xml.Linq;
 using DocumentFormat.OpenXml.Packaging;
-using System.Drawing;
 
 namespace OpenXmlPowerTools
 {
@@ -35,6 +33,7 @@ namespace OpenXmlPowerTools
 
     public static class FormattingAssembler
     {
+#if NET462
         public static WmlDocument AssembleFormatting(WmlDocument document, FormattingAssemblerSettings settings)
         {
             using (OpenXmlMemoryStreamDocument streamDoc = new OpenXmlMemoryStreamDocument(document))
@@ -96,6 +95,8 @@ namespace OpenXmlPowerTools
                 part.SaveXDocument();
             }
         }
+
+#endif
 
         private static void FixNonconformantHexValues(XElement root)
         {
@@ -200,6 +201,8 @@ namespace OpenXmlPowerTools
 
             stylePart.SaveXDocument();
         }
+
+#if NET462
 
         private static void NormalizeListItems(FormattingAssemblerInfo fai, WordprocessingDocument wDoc, FormattingAssemblerSettings settings)
         {
@@ -637,6 +640,8 @@ namespace OpenXmlPowerTools
             return node;
         }
 
+
+#endif
         private static object TransformToDeleted(XNode node)
         {
             XElement element = node as XElement;
@@ -1673,7 +1678,7 @@ namespace OpenXmlPowerTools
                     color1 = Convert.ToInt32(color1str, 16);
                 }
                 // if the above throws ArgumentException, FormatException, or OverflowException, then abort
-                catch (Exception) 
+                catch (Exception)
                 {
                     return sideToReplace;
                 }
@@ -2885,7 +2890,7 @@ namespace OpenXmlPowerTools
             '\x066B', // arabic decimal separator
             '\x066C', // arabic thousands separator
 
-            '\x0627', // arabic pipe 
+            '\x0627', // arabic pipe
 
             '\x20A0', // start currency symbols
             '\x20A1',

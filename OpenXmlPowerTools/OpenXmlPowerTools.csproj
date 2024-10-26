@@ -39,7 +39,8 @@
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
-    <PackageReference Include="System.Drawing.Common" Version="$(SystemDrawingCommonVersion)" />
+    <!-- System.Drawing.Common package removed since it is NOT cross-platform -->
+    <!-- <PackageReference Include="System.Drawing.Common" Version="$(SystemDrawingCommonVersion)" /> -->
     <PackageReference Include="System.IO.Packaging" Version="$(SystemIOPackagingVersion)" />
   </ItemGroup>
 

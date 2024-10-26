@@ -15,8 +15,6 @@ using System.Text;
 using System.Xml.Linq;
 using DocumentFormat.OpenXml.Packaging;
 using System.Drawing;
-using System.Security.Cryptography;
-using OpenXmlPowerTools;
 
 // It is possible to optimize DescendantContentAtoms
 

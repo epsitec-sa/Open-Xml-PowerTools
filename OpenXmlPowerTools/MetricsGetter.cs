@@ -1,6 +1,8 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+#if NET462
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -1328,3 +1330,5 @@ namespace OpenXmlPowerTools
 
 #pragma warning restore IDE1006 // Naming Styles
 }
+
+#endif

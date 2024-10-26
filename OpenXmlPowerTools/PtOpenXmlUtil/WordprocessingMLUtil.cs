@@ -14,6 +14,8 @@ namespace OpenXmlPowerTools
         private static readonly HashSet<string> UnknownFonts = new HashSet<string>();
         private static HashSet<string> KnownFamilies;
 
+#if NET462
+
         public static int CalcWidthOfRunInTwips(XElement r)
         {
             if (KnownFamilies == null)
@@ -111,6 +113,8 @@ namespace OpenXmlPowerTools
 
             return (int)(w / 96m * 1440m / multiplier + tabLength * 1440m);
         }
+
+#endif
 
         public static bool GetBoolProp(XElement runProps, XName xName)
         {

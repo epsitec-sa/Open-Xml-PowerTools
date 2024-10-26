@@ -1,14 +1,14 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+#if NET462
+
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
-using OpenXmlPowerTools;
-using OpenXmlPowerTools.HtmlToWml;
 using OpenXmlPowerTools.HtmlToWml.CSS;
 using System.Globalization;
 
@@ -96,10 +96,10 @@ Following is my new theory of the correct algorithm:
       compute value
       set the computed value
       return the computed value
-  
+
   ComputeValue
     this needs to be specifically coded for each property
-    if value is relative (em, ex, percentage, 
+    if value is relative (em, ex, percentage,
       if property is not on font-size
         GetComputedValue for font-size
         compute value accordingly
@@ -557,7 +557,7 @@ namespace OpenXmlPowerTools.HtmlToWml
                         return false;
                     return true;
                 },
-                InitialValue = (element, settings) => 
+                InitialValue = (element, settings) =>
                     {
                         if (settings.DefaultBlockContentMargin != null)
                         {
@@ -872,7 +872,7 @@ namespace OpenXmlPowerTools.HtmlToWml
                         return false;
                     return true;
                 },
-                InitialValue = (element, settings) => 
+                InitialValue = (element, settings) =>
                 {
                     if (element.Parent == null)
                     {
@@ -923,7 +923,7 @@ namespace OpenXmlPowerTools.HtmlToWml
                     return ComputeAbsoluteLength(element, assignedValue, settings, valueForPercentage);
                 },
             },
-            
+
             // min-width
             // Value:          <length> | <percentage> | inherit
             // Initial:        0
@@ -1012,7 +1012,7 @@ namespace OpenXmlPowerTools.HtmlToWml
                     return ComputeAbsoluteLength(element, assignedValue, settings, valueForPercentage);
                 },
             },
-            
+
             // min-height
             // Value:          <length> | <percentage> | inherit
             // Initial:        0
@@ -1070,7 +1070,7 @@ namespace OpenXmlPowerTools.HtmlToWml
                     return ComputeAbsoluteLength(element, assignedValue, settings, valueForPercentage);
                 },
             },
-            
+
             // vertical-align
             // Value:          baseline | sub | super | top | text-top | middle | bottom | text-bottom |
             //                 <percentage> | <length> | inherit
@@ -1105,7 +1105,7 @@ namespace OpenXmlPowerTools.HtmlToWml
             // Percentages:    refer to height of containing block
             // Computed value: if specified as a length, the corresponding absolute length; if
             //                 specified as a percentage, the specified value; otherwise, ’auto’.
-            // 
+            //
             // right
             // Value:          <length> | <percentage> | auto | inherit
             // Initial:        auto
@@ -1114,7 +1114,7 @@ namespace OpenXmlPowerTools.HtmlToWml
             // Percentages:    refer to width of containing block
             // Computed value: if specified as a length, the corresponding absolute length; if
             //                 specified as a percentage, the specified value; otherwise, ’auto’.
-            // 
+            //
             // bottom
             // Value:          <length> | <percentage> | auto | inherit
             // Initial:        auto
@@ -1123,7 +1123,7 @@ namespace OpenXmlPowerTools.HtmlToWml
             // Percentages:    refer to height of containing block
             // Computed value: if specified as a length, the corresponding absolute length; if
             //                 specified as a percentage, the specified value; otherwise, ’auto’.
-            // 
+            //
             // left
             // Value:          <length> | <percentage> | auto | inherit
             // Initial:        auto
@@ -1142,7 +1142,7 @@ namespace OpenXmlPowerTools.HtmlToWml
             // Inherited:      no
             // Percentages:    N/A
             // Computed value: as specified
-            // 
+            //
             // z-index
             // Value:          auto | integer | inherit
             // Initial:        auto
@@ -3681,7 +3681,7 @@ word-spacing
 z-index
 
 attributes
-==========			
+==========
 meta
 style
 _class
@@ -3706,7 +3706,7 @@ descr
 type
 
 elements
-========			
+========
 html
 head
 body
@@ -3741,3 +3741,4 @@ tbody
 
 #endif
 
+#endif

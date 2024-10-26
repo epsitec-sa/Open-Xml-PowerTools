@@ -3,15 +3,10 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Drawing;
-using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Xml.Linq;
 using DocumentFormat.OpenXml.Packaging;
 using System.IO;
-using OpenXmlPowerTools;
 
 namespace OpenXmlPowerTools
 {
@@ -620,7 +615,7 @@ namespace OpenXmlPowerTools
                 TransformRemoveNamespace(sheetFormatPr),
                 TransformRemoveNamespace(shXDoc.Root.Element(S.cols)),
                 mergeCells);
-            
+
             if (!dataProps.HasAttributes && !dataProps.HasElements)
                 dataProps = null;
             return dataProps;

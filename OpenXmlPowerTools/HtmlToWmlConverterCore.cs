@@ -96,29 +96,27 @@
 // then need to make sure that all of the cells below the caption have the border on the appropriate sides so that it looks as if the table
 // has a border.
 
+#if NET462
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 using DocumentFormat.OpenXml.Packaging;
-using OpenXmlPowerTools;
-using OpenXmlPowerTools.HtmlToWml;
 using OpenXmlPowerTools.HtmlToWml.CSS;
-using System.Text.RegularExpressions;
 
 namespace OpenXmlPowerTools.HtmlToWml
 {
-    public class ElementToStyleMap
+    internal class ElementToStyleMap
     {
         public string ElementName;
         public string StyleName;
     }
 
-    public static class LocalExtensions
+    internal static class LocalExtensions
     {
         public static CssExpression GetProp(this XElement element, string propertyName)
         {
@@ -4176,7 +4174,7 @@ namespace OpenXmlPowerTools.HtmlToWml
         public int Id;
     }
 
-    class HtmlToWmlFontUpdater
+    internal class HtmlToWmlFontUpdater
     {
         public static void UpdateFontsPart(WordprocessingDocument wDoc, XElement html, HtmlToWmlConverterSettings settings)
         {
@@ -4620,7 +4618,7 @@ namespace OpenXmlPowerTools.HtmlToWml
         }
     }
 
-    class StylesUpdater
+    internal class StylesUpdater
     {
         public static void UpdateStylesPart(
             WordprocessingDocument wDoc,
@@ -5309,7 +5307,7 @@ namespace OpenXmlPowerTools.HtmlToWml
         }
     }
 
-    class ThemeUpdater
+    internal class ThemeUpdater
     {
         public static void UpdateThemePart(WordprocessingDocument wDoc, XElement html, HtmlToWmlConverterSettings settings)
         {
@@ -5363,3 +5361,5 @@ namespace OpenXmlPowerTools.HtmlToWml
         }
     }
 }
+
+#endif

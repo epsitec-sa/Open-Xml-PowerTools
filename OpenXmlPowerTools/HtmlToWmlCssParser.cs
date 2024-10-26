@@ -14,6 +14,8 @@ Resource Center and Documentation: http://openxmldeveloper.org/wiki/w/wiki/power
 
 ***************************************************************************/
 
+#if NET462
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -498,9 +500,9 @@ namespace OpenXmlPowerTools.HtmlToWml.CSS
 
         private string ToCharSetString(string start)
         {
-            return string.Format("{2}{0} {1}", 
-                m_name, 
-                m_expression.ToString(), 
+            return string.Format("{2}{0} {1}",
+                m_name,
+                m_expression.ToString(),
                 start);
         }
     }
@@ -574,7 +576,7 @@ namespace OpenXmlPowerTools.HtmlToWml.CSS
                 }
                 else
                 {
-                    sb.AppendFormat("{0} ", 
+                    sb.AppendFormat("{0} ",
                         term.Separator.HasValue ? term.Separator.Value.ToString() : "");
                 }
                 sb.Append(term.ToString());
@@ -770,8 +772,8 @@ namespace OpenXmlPowerTools.HtmlToWml.CSS
         {
             get
             {
-                if (((m_type == CssValueType.Hex) 
-                    || (m_type == CssValueType.String && m_value.StartsWith("#"))) 
+                if (((m_type == CssValueType.Hex)
+                    || (m_type == CssValueType.String && m_value.StartsWith("#")))
                     && (m_value.Length == 6 || (m_value.Length == 7 && m_value.StartsWith("#"))))
                 {
                     bool hex = true;
@@ -857,25 +859,25 @@ namespace OpenXmlPowerTools.HtmlToWml.CSS
                 switch (chunk)
                 {
                     case "A":
-                        val = 10; 
+                        val = 10;
                         break;
                     case "B":
-                        val = 11; 
+                        val = 11;
                         break;
                     case "C":
-                        val = 12; 
+                        val = 12;
                         break;
                     case "D":
-                        val = 13; 
+                        val = 13;
                         break;
                     case "E":
-                        val = 14; 
+                        val = 14;
                         break;
                     case "F":
-                        val = 15; 
+                        val = 15;
                         break;
                     default:
-                        val = int.Parse(chunk); 
+                        val = int.Parse(chunk);
                         break;
                 }
                 if (i == 0)
@@ -933,14 +935,14 @@ namespace OpenXmlPowerTools.HtmlToWml.CSS
             bool first = true;
             foreach (CssSelector sel in m_selectors)
             {
-                if (first) 
-                { 
-                    first = false; 
-                    sb.Append(start); 
-                } 
-                else 
-                { 
-                    sb.Append(", "); 
+                if (first)
+                {
+                    first = false;
+                    sb.Append(start);
+                }
+                else
+                {
+                    sb.Append(", ");
                 }
                 sb.Append(sel.ToString());
             }
@@ -1105,14 +1107,14 @@ namespace OpenXmlPowerTools.HtmlToWml.CSS
             {
                 switch (m_combinator.Value)
                 {
-                    case OpenXmlPowerTools.HtmlToWml.CSS.CssCombinator.PrecededImmediatelyBy: 
-                        sb.Append(" + "); 
+                    case OpenXmlPowerTools.HtmlToWml.CSS.CssCombinator.PrecededImmediatelyBy:
+                        sb.Append(" + ");
                         break;
-                    case OpenXmlPowerTools.HtmlToWml.CSS.CssCombinator.ChildOf: 
-                        sb.Append(" > "); 
+                    case OpenXmlPowerTools.HtmlToWml.CSS.CssCombinator.ChildOf:
+                        sb.Append(" > ");
                         break;
-                    case OpenXmlPowerTools.HtmlToWml.CSS.CssCombinator.PrecededBy: 
-                        sb.Append(" ~ "); 
+                    case OpenXmlPowerTools.HtmlToWml.CSS.CssCombinator.PrecededBy:
+                        sb.Append(" ~ ");
                         break;
                 }
             }
@@ -1534,9 +1536,9 @@ namespace OpenXmlPowerTools.HtmlToWml.CSS
                     {
                         for (int i = 0; i < m_function.Expression.Terms.Count; i++)
                         {
-                            if (m_function.Expression.Terms[i].Type != CssTermType.Number) 
-                            { 
-                                return false; 
+                            if (m_function.Expression.Terms[i].Type != CssTermType.Number)
+                            {
+                                return false;
                             }
                         }
                         return true;
@@ -1547,9 +1549,9 @@ namespace OpenXmlPowerTools.HtmlToWml.CSS
                     {
                         for (int i = 0; i < m_function.Expression.Terms.Count; i++)
                         {
-                            if (m_function.Expression.Terms[i].Type != CssTermType.Number) 
-                            { 
-                                return false; 
+                            if (m_function.Expression.Terms[i].Type != CssTermType.Number)
+                            {
+                                return false;
                             }
                         }
                         return true;
@@ -1606,17 +1608,17 @@ namespace OpenXmlPowerTools.HtmlToWml.CSS
                     int fr = 0, fg = 0, fb = 0;
                     for (int i = 0; i < m_function.Expression.Terms.Count; i++)
                     {
-                        if (m_function.Expression.Terms[i].Type != CssTermType.Number) 
-                        { 
-                            return Color.Black; 
+                        if (m_function.Expression.Terms[i].Type != CssTermType.Number)
+                        {
+                            return Color.Black;
                         }
                         switch (i)
                         {
-                            case 0: fr = GetRGBValue(m_function.Expression.Terms[i]); 
+                            case 0: fr = GetRGBValue(m_function.Expression.Terms[i]);
                                 break;
-                            case 1: fg = GetRGBValue(m_function.Expression.Terms[i]); 
+                            case 1: fg = GetRGBValue(m_function.Expression.Terms[i]);
                                 break;
-                            case 2: fb = GetRGBValue(m_function.Expression.Terms[i]); 
+                            case 2: fb = GetRGBValue(m_function.Expression.Terms[i]);
                                 break;
                         }
                     }
@@ -1632,11 +1634,11 @@ namespace OpenXmlPowerTools.HtmlToWml.CSS
                         if (m_function.Expression.Terms[i].Type != CssTermType.Number) { return Color.Black; }
                         switch (i)
                         {
-                            case 0: h = GetHueValue(m_function.Expression.Terms[i]); 
+                            case 0: h = GetHueValue(m_function.Expression.Terms[i]);
                                 break;
-                            case 1: s = GetRGBValue(m_function.Expression.Terms[i]); 
+                            case 1: s = GetRGBValue(m_function.Expression.Terms[i]);
                                 break;
-                            case 2: v = GetRGBValue(m_function.Expression.Terms[i]); 
+                            case 2: v = GetRGBValue(m_function.Expression.Terms[i]);
                                 break;
                         }
                     }
@@ -1675,25 +1677,25 @@ namespace OpenXmlPowerTools.HtmlToWml.CSS
                 switch (chunk)
                 {
                     case "A":
-                        val = 10; 
+                        val = 10;
                         break;
                     case "B":
-                        val = 11; 
+                        val = 11;
                         break;
                     case "C":
-                        val = 12; 
+                        val = 12;
                         break;
                     case "D":
-                        val = 13; 
+                        val = 13;
                         break;
                     case "E":
-                        val = 14; 
+                        val = 14;
                         break;
                     case "F":
-                        val = 15; 
+                        val = 15;
                         break;
                     default:
-                        val = int.Parse(chunk); 
+                        val = int.Parse(chunk);
                         break;
                 }
                 if (i == 0)
@@ -2090,7 +2092,7 @@ namespace OpenXmlPowerTools.HtmlToWml.CSS
 
         void SyntaxErr(int n)
         {
-            if (errDist >= minErrDist) 
+            if (errDist >= minErrDist)
                 m_errors.SyntaxError(m_lookaheadToken.m_tokenLine, m_lookaheadToken.m_tokenColumn, n);
             errDist = 0;
         }
@@ -2108,10 +2110,10 @@ namespace OpenXmlPowerTools.HtmlToWml.CSS
             {
                 m_lastRecognizedToken = m_lookaheadToken;
                 m_lookaheadToken = m_scanner.Scan();
-                if (m_lookaheadToken.m_tokenKind <= c_maxT) 
-                { 
-                    ++errDist; 
-                    break; 
+                if (m_lookaheadToken.m_tokenKind <= c_maxT)
+                {
+                    ++errDist;
+                    break;
                 }
 
                 m_lookaheadToken = m_lastRecognizedToken;
@@ -2135,12 +2137,12 @@ namespace OpenXmlPowerTools.HtmlToWml.CSS
 
         void ExpectWeak(int n, int follow)
         {
-            if (m_lookaheadToken.m_tokenKind == n) 
+            if (m_lookaheadToken.m_tokenKind == n)
                 Get();
             else
             {
                 SyntaxErr(n);
-                while (!StartOf(follow)) 
+                while (!StartOf(follow))
                     Get();
             }
         }
@@ -2149,14 +2151,14 @@ namespace OpenXmlPowerTools.HtmlToWml.CSS
         bool WeakSeparator(int n, int syFol, int repFol)
         {
             int kind = m_lookaheadToken.m_tokenKind;
-            if (kind == n) 
-            { 
-                Get(); 
-                return true; 
+            if (kind == n)
+            {
+                Get();
+                return true;
             }
-            else if (StartOf(repFol)) 
-            { 
-                return false; 
+            else if (StartOf(repFol))
+            {
+                return false;
             }
             else
             {
@@ -2268,10 +2270,10 @@ namespace OpenXmlPowerTools.HtmlToWml.CSS
                     {
                         Get();
                     }
-                    if (m_lookaheadToken.m_tokenValue.Equals("}")) 
-                    { 
-                        Get(); 
-                        return; 
+                    if (m_lookaheadToken.m_tokenValue.Equals("}"))
+                    {
+                        Get();
+                        return;
                     }
 
                     Declaration(out dec);
@@ -2318,26 +2320,26 @@ namespace OpenXmlPowerTools.HtmlToWml.CSS
             dir.Name += ident;
             switch (dir.Name.ToLower())
             {
-                case "@media": 
-                    dir.Type = CssDirectiveType.Media; 
+                case "@media":
+                    dir.Type = CssDirectiveType.Media;
                     break;
-                case "@import": 
-                    dir.Type = CssDirectiveType.Import; 
+                case "@import":
+                    dir.Type = CssDirectiveType.Import;
                     break;
-                case "@charset": 
-                    dir.Type = CssDirectiveType.Charset; 
+                case "@charset":
+                    dir.Type = CssDirectiveType.Charset;
                     break;
-                case "@page": 
-                    dir.Type = CssDirectiveType.Page; 
+                case "@page":
+                    dir.Type = CssDirectiveType.Page;
                     break;
-                case "@font-face": 
-                    dir.Type = CssDirectiveType.FontFace; 
+                case "@font-face":
+                    dir.Type = CssDirectiveType.FontFace;
                     break;
-                case "@namespace": 
-                    dir.Type = CssDirectiveType.Namespace; 
+                case "@namespace":
+                    dir.Type = CssDirectiveType.Namespace;
                     break;
-                default: 
-                    dir.Type = CssDirectiveType.Other; 
+                default:
+                    dir.Type = CssDirectiveType.Other;
                     break;
             }
 
@@ -2406,10 +2408,10 @@ namespace OpenXmlPowerTools.HtmlToWml.CSS
                                 {
                                     Get();
                                 }
-                                if (m_lookaheadToken.m_tokenValue.Equals("}")) 
-                                { 
-                                    Get(); 
-                                    return; 
+                                if (m_lookaheadToken.m_tokenValue.Equals("}"))
+                                {
+                                    Get();
+                                    return;
                                 }
                                 Declaration(out dec);
                                 dir.Declarations.Add(dec);
@@ -2474,9 +2476,9 @@ namespace OpenXmlPowerTools.HtmlToWml.CSS
                 {
                     Get();
                     qs += m_lastRecognizedToken.m_tokenValue;
-                    if (m_lookaheadToken.m_tokenValue.Equals("'") && !m_lastRecognizedToken.m_tokenValue.Equals("\\")) 
-                    { 
-                        break; 
+                    if (m_lookaheadToken.m_tokenValue.Equals("'") && !m_lastRecognizedToken.m_tokenValue.Equals("\\"))
+                    {
+                        break;
                     }
                 }
                 Expect(7);
@@ -2488,9 +2490,9 @@ namespace OpenXmlPowerTools.HtmlToWml.CSS
                 {
                     Get();
                     qs += m_lastRecognizedToken.m_tokenValue;
-                    if (m_lookaheadToken.m_tokenValue.Equals("\"") && !m_lastRecognizedToken.m_tokenValue.Equals("\\")) 
-                    { 
-                        break; 
+                    if (m_lookaheadToken.m_tokenValue.Equals("\"") && !m_lastRecognizedToken.m_tokenValue.Equals("\\"))
+                    {
+                        break;
                     }
                 }
                 Expect(8);
@@ -2525,9 +2527,9 @@ namespace OpenXmlPowerTools.HtmlToWml.CSS
                 {
                     Get();
                     url += m_lastRecognizedToken.m_tokenValue;
-                    if (m_lookaheadToken.m_tokenValue.Equals(")")) 
-                    { 
-                        break; 
+                    if (m_lookaheadToken.m_tokenValue.Equals(")"))
+                    {
+                        break;
                     }
                 }
             }
@@ -2718,9 +2720,9 @@ namespace OpenXmlPowerTools.HtmlToWml.CSS
                     }
                 }
                 Term(out trm);
-                if (sep.HasValue) 
-                { 
-                    trm.Separator = sep.Value; 
+                if (sep.HasValue)
+                {
+                    trm.Separator = sep.Value;
                 }
                 exp.Terms.Add(trm);
                 sep = null;
@@ -2813,9 +2815,9 @@ namespace OpenXmlPowerTools.HtmlToWml.CSS
                     Get();
                 }
                 SimpleSelector(out ss);
-                if (cb.HasValue) 
-                { 
-                    ss.Combinator = cb.Value; 
+                if (cb.HasValue)
+                {
+                    ss.Combinator = cb.Value;
                 }
                 sel.SimpleSelectors.Add(ss);
 
@@ -2862,13 +2864,13 @@ namespace OpenXmlPowerTools.HtmlToWml.CSS
                         ss.ID = "-";
                     }
                     Identity(out ident);
-                    if (ss.ID == null) 
-                    { 
-                        ss.ID = ident; 
-                    } 
-                    else 
-                    { 
-                        ss.ID += ident; 
+                    if (ss.ID == null)
+                    {
+                        ss.ID = ident;
+                    }
+                    else
+                    {
+                        ss.ID += ident;
                     }
                 }
                 else if (m_lookaheadToken.m_tokenKind == 34)
@@ -4386,3 +4388,5 @@ namespace OpenXmlPowerTools.HtmlToWml.CSS
     }
 
 }
+
+#endif
