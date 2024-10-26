@@ -1,33 +1,42 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using DocumentFormat.OpenXml.Packaging;
+using JetBrains.Annotations;
+
+#nullable enable
 
 namespace OpenXmlPowerTools
 {
+    [PublicAPI]
     public static class PtOpenXmlExtensions
     {
         public static XDocument GetXDocument(this OpenXmlPart part, out XmlNamespaceManager namespaceManager)
         {
-            if (part == null) throw new ArgumentNullException(nameof(part));
-
             XDocument partXDocument = part.GetXDocument();
+            var annotation = partXDocument.Annotation<XmlNamespaceManager>();
 
-            namespaceManager = partXDocument.Annotation<XmlNamespaceManager>();
-            if (namespaceManager != null)
+            if (annotation is not null)
             {
+                namespaceManager = annotation;
                 return partXDocument;
             }
 
             namespaceManager = CreateXmlNamespaceManager(partXDocument.Root);
             partXDocument.AddAnnotation(namespaceManager);
-
             return partXDocument;
         }
 
-        private static XmlNamespaceManager CreateXmlNamespaceManager(XElement root)
+        public static XElement GetXElementOrThrow(this OpenXmlPart? part)
+        {
+            return part is null
+                ? throw new ArgumentException("OpenXmlPart is null.", nameof(part))
+                : part.GetXElement() ?? throw new ArgumentException("Root XElement is null.", nameof(part));
+        }
+
+        private static XmlNamespaceManager CreateXmlNamespaceManager(XElement? root)
         {
             var namespaceManager = new XmlNamespaceManager(new NameTable());
 
@@ -51,8 +60,6 @@ namespace OpenXmlPowerTools
         [Obsolete("Use SaveXDocument(OpenXmlPart) instead.")]
         public static void PutXDocument(this OpenXmlPart part)
         {
-            if (part == null) throw new ArgumentNullException(nameof(part));
-
             part.SaveXDocument();
         }
 
@@ -64,9 +71,31 @@ namespace OpenXmlPowerTools
         [Obsolete("Use SetXDocument(OpenXmlPart, XDocument) instead.")]
         public static void PutXDocument(this OpenXmlPart part, XDocument document)
         {
-            if (part == null) throw new ArgumentNullException(nameof(part));
-
             part.SetXDocument(document);
+        }
+
+        public static void ThrowIfNotValid(this WordprocessingDocument wordDocument)
+        {
+            MainDocumentPart? mainDocumentPart = wordDocument.MainDocumentPart;
+
+            if (mainDocumentPart is null)
+            {
+                throw new InvalidOperationException("MainDocumentPart is missing.");
+            }
+
+            XElement? document = mainDocumentPart.GetXElement();
+
+            if (document is null)
+            {
+                throw new InvalidOperationException("MainDocumentPart has no root element.");
+            }
+
+            XElement? body = document.Element(W.body);
+
+            if (body is null)
+            {
+                throw new InvalidOperationException("MainDocumentPart has no w:body descendant.");
+            }
         }
 
         public static IEnumerable<XElement> LogicalChildrenContent(this XElement element)

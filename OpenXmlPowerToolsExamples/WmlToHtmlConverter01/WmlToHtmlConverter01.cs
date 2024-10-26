@@ -1,6 +1,8 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+#if NET462
+
 using System;
 using System.Drawing.Imaging;
 using System.IO;
@@ -71,7 +73,7 @@ internal static class WmlToHtmlConverter01
 
         XElement htmlElement = WmlToHtmlConverter.ConvertToHtml(wordDocument, settings);
 
-        // Produce a HTML document with <!DOCTYPE html > declaration to tell the browser
+        // Produce an HTML document with <!DOCTYPE html > declaration to tell the browser
         // we are using HTML5.
         var htmlDocument = new XDocument(new XDocumentType("html", null, null, null), htmlElement);
 
@@ -142,3 +144,19 @@ internal static class WmlToHtmlConverter01
         };
     }
 }
+
+#else
+
+using System;
+
+namespace OpenXmlPowerTools;
+
+internal static class Program
+{
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("This sample is only supported on Windows.");
+    }
+}
+
+#endif

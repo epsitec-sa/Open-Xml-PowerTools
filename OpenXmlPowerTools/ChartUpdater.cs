@@ -598,7 +598,6 @@ namespace OpenXmlPowerTools
 
             if (chartRid == null)
             {
-                // TODO: Revisit. This returned true, which did not seem to make sense.
                 return false;
             }
 

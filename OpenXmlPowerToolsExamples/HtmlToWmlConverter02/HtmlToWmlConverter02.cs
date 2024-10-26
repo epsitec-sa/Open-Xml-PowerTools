@@ -1,6 +1,8 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+#if NET462
+
 using System;
 using System.Drawing.Imaging;
 using System.IO;
@@ -392,3 +394,19 @@ BDO[DIR=""rtl""] { direction: rtl; unicode-bidi: bidi-override }
         }
     }
 }
+
+#else
+
+using System;
+
+namespace OpenXmlPowerTools;
+
+internal static class Program
+{
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("This sample is only supported on Windows.");
+    }
+}
+
+#endif

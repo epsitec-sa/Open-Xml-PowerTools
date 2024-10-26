@@ -20,7 +20,7 @@ using Word = Microsoft.Office.Interop.Word;
 
 // TODO: Revisit. Test only supported on Windows.
 // NET5_0_WINDOWS_OR_GREATER not (!) defined, only NET6_0_WINDOWS_OR_GREATER.
-#if !ELIDE_XUNIT_TESTS && NETFRAMEWORK
+#if !ELIDE_XUNIT_TESTS && NET462
 
 namespace OxPt
 {

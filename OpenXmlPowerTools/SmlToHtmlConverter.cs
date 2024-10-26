@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft. All rights reserved.
+// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
@@ -14,7 +14,7 @@ using System.IO;
 
 namespace OpenXmlPowerTools
 {
-    public partial class SmlDocument
+    public sealed partial class SmlDocument
     {
         [SuppressMessage("ReSharper", "UnusedMember.Global")]
         public XElement ConvertToHtml(SmlToHtmlConverterSettings htmlConverterSettings, string tableName)

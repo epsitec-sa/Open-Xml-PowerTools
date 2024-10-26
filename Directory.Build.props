@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project>
   <PropertyGroup>
     <NoWarn>$(NoWarn);SA0001</NoWarn>
@@ -7,49 +7,52 @@
     <!--
       The following values for ProjectLoadStyle are supported:
       - netstandard2_0:  .NET Standard 2.0
-      - net461:          .NET Framework 4.6.1
+      - net462:          .NET Framework 4.6.2
       - All:             Will build for all platforms
 
-      The choice of targeting .NET Standard 2.0 and .NET Framework 4.6.1 is based on Microsoft's
+      The choice of targeting .NET Standard 2.0 and .NET Framework 4.6.2 is based on Microsoft's
       recommendations regarding cross-platform targeting:
       - DO start with including a netstandard2.0 target
-      - CONSIDER adding a target for net461 when you're offering a netstandard2.0 target.
+      - CONSIDER adding a target for net462 when you're offering a netstandard2.0 target.
 
       See https://docs.microsoft.com/en-us/dotnet/standard/library-guidance/cross-platform-targeting
     -->
-    <ProjectLoadStyle Condition=" '$(ProjectLoadStyle)' == '' ">net461</ProjectLoadStyle>
+    <ProjectLoadStyle Condition=" '$(ProjectLoadStyle)' == '' ">netstandard2_0</ProjectLoadStyle>
 
     <__InvalidProjectLoadStyle>false</__InvalidProjectLoadStyle>
   </PropertyGroup>
 
   <PropertyGroup>
-    <DocumentFormatOpenXmlVersion>2.15.0</DocumentFormatOpenXmlVersion>
-    <JetBrainsAnnotationsVersion>2021.3.0</JetBrainsAnnotationsVersion>
-    <SystemDrawingCommonVersion>4.7.0</SystemDrawingCommonVersion>
-    <SystemIOPackagingVersion>4.7.0</SystemIOPackagingVersion>
+    <DocumentFormatOpenXmlVersion>2.19.0</DocumentFormatOpenXmlVersion>
+    <JetBrainsAnnotationsVersion>2024.3.0</JetBrainsAnnotationsVersion>
+    <NullableVersion>1.3.1</NullableVersion>
+    <SystemDrawingCommonVersion>8.0.1</SystemDrawingCommonVersion>
+    <SystemIOPackagingVersion>8.0.1</SystemIOPackagingVersion>
   </PropertyGroup>
 
   <Choose>
     <When Condition=" '$(ProjectLoadStyle)' == 'netstandard2_0' ">
       <PropertyGroup>
         <ProductTargetFrameworks>netstandard2.0</ProductTargetFrameworks>
-        <TestTargetFrameworks>net5.0</TestTargetFrameworks>
-        <SamplesFrameworks>net5.0</SamplesFrameworks>
+        <TestTargetFrameworks>net8.0</TestTargetFrameworks>
+        <SamplesFrameworks>net8.0</SamplesFrameworks>
       </PropertyGroup>
       <ItemGroup>
         <PackageReference Include="DocumentFormat.OpenXml" Version="$(DocumentFormatOpenXmlVersion)" />
         <PackageReference Include="DocumentFormat.OpenXml.Linq" Version="$(DocumentFormatOpenXmlVersion)" />
+        <PackageReference Include="Nullable" Version="$(NullableVersion)" />
       </ItemGroup>
     </When>
-    <When Condition=" '$(ProjectLoadStyle)' == 'net461' ">
+    <When Condition=" '$(ProjectLoadStyle)' == 'net462' ">
       <PropertyGroup>
-        <ProductTargetFrameworks>net461</ProductTargetFrameworks>
-        <TestTargetFrameworks>net461</TestTargetFrameworks>
-        <SamplesFrameworks>net461</SamplesFrameworks>
+        <ProductTargetFrameworks>net462</ProductTargetFrameworks>
+        <TestTargetFrameworks>net462</TestTargetFrameworks>
+        <SamplesFrameworks>net462</SamplesFrameworks>
       </PropertyGroup>
       <ItemGroup>
         <PackageReference Include="DocumentFormat.OpenXml" Version="$(DocumentFormatOpenXmlVersion)" />
         <PackageReference Include="DocumentFormat.OpenXml.Linq" Version="$(DocumentFormatOpenXmlVersion)" />
+        <PackageReference Include="Nullable" Version="$(NullableVersion)" />
       </ItemGroup>
       <ItemGroup>
         <Reference Include="System" />
@@ -63,15 +66,16 @@
           .NET Standard target must be first to avoid a ResXFileCodeGenerator issue
           (tracked at https://github.com/dotnet/project-system/issues/1519)
         -->
-        <ProductTargetFrameworks>netstandard2.0;net461</ProductTargetFrameworks>
-        <TestTargetFrameworks>net461;net5.0</TestTargetFrameworks>
-        <SamplesFrameworks>net461;net5.0</SamplesFrameworks>
+        <ProductTargetFrameworks>netstandard2.0;net462</ProductTargetFrameworks>
+        <TestTargetFrameworks>net472;net8.0</TestTargetFrameworks>
+        <SamplesFrameworks>net472;net8.0</SamplesFrameworks>
       </PropertyGroup>
       <ItemGroup>
         <PackageReference Include="DocumentFormat.OpenXml" Version="$(DocumentFormatOpenXmlVersion)" />
         <PackageReference Include="DocumentFormat.OpenXml.Linq" Version="$(DocumentFormatOpenXmlVersion)" />
+        <PackageReference Include="Nullable" Version="$(NullableVersion)" />
       </ItemGroup>
-      <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
+      <ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">
         <Reference Include="System" />
         <Reference Include="System.Xml" />
         <Reference Include="WindowsBase" />
@@ -80,13 +84,14 @@
     <Otherwise>
       <PropertyGroup>
         <ProductTargetFrameworks>netstandard2.0</ProductTargetFrameworks>
-        <TestTargetFrameworks>net5.0</TestTargetFrameworks>
-        <SamplesFrameworks>net5.0</SamplesFrameworks>
+        <TestTargetFrameworks>net8.0</TestTargetFrameworks>
+        <SamplesFrameworks>net8.0</SamplesFrameworks>
         <__InvalidProjectLoadStyle>true</__InvalidProjectLoadStyle>
       </PropertyGroup>
       <ItemGroup>
         <PackageReference Include="DocumentFormat.OpenXml" Version="$(DocumentFormatOpenXmlVersion)" />
         <PackageReference Include="DocumentFormat.OpenXml.Linq" Version="$(DocumentFormatOpenXmlVersion)" />
+        <PackageReference Include="Nullable" Version="$(NullableVersion)" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -100,7 +105,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <LangVersion>9.0</LangVersion>
+    <LangVersion>12.0</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup>

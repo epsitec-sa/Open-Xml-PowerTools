@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft. All rights reserved.
+// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
@@ -22,16 +22,14 @@ namespace OpenXmlPowerTools
 {
     public partial class WmlDocument
     {
-        [SuppressMessage("ReSharper", "UnusedMember.Global")]
         public XElement ConvertToHtml(WmlToHtmlConverterSettings htmlConverterSettings)
         {
             return WmlToHtmlConverter.ConvertToHtml(this, htmlConverterSettings);
         }
 
-        [SuppressMessage("ReSharper", "UnusedMember.Global")]
         public XElement ConvertToHtml(HtmlConverterSettings htmlConverterSettings)
         {
-            WmlToHtmlConverterSettings settings = new WmlToHtmlConverterSettings(htmlConverterSettings);
+            var settings = new WmlToHtmlConverterSettings(htmlConverterSettings);
             return WmlToHtmlConverter.ConvertToHtml(this, settings);
         }
     }
