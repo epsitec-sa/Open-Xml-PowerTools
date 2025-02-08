@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6-windows</TargetFramework>
+    <TargetFramework>$(WindowsTargetFramework)</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
@@ -9,11 +9,6 @@
     <ProjectReference Include="..\..\OpenXmlPowerTools\OpenXmlPowerTools.csproj" />
     <PackageReference Include="DocumentFormat.OpenXml" />
   </ItemGroup>
-
-  <!--<ItemGroup>
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="WindowsBase" />
-  </ItemGroup>-->
 
   <ItemGroup>
     <Compile Update="Form1.cs">
