@@ -21,7 +21,7 @@ namespace OpenXmlRegex01
                 $"ExampleOutput-{n.Year - 2000:00}-{n.Month:00}-{n.Day:00}-{n.Hour:00}{n.Minute:00}{n.Second:00}");
             tempDi.Create();
 
-            var sourceDoc = new FileInfo("../../TestDocument.docx");
+            var sourceDoc = new FileInfo("../../../TestDocument.docx");
             var newDoc = new FileInfo(Path.Combine(tempDi.FullName, "Modified.docx"));
             File.Copy(sourceDoc.FullName, newDoc.FullName);
             using (WordprocessingDocument wDoc = WordprocessingDocument.Open(newDoc.FullName, true))
@@ -213,7 +213,7 @@ namespace OpenXmlRegex01
                 wDoc.MainDocumentPart.PutXDocument();
             }
 
-            var sourcePres = new FileInfo("../../TestPresentation.pptx");
+            var sourcePres = new FileInfo("../../../TestPresentation.pptx");
             var newPres = new FileInfo(Path.Combine(tempDi.FullName, "Modified.pptx"));
             File.Copy(sourcePres.FullName, newPres.FullName);
             using (PresentationDocument pDoc = PresentationDocument.Open(newPres.FullName, true))
