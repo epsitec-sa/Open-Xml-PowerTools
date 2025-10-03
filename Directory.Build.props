@@ -6,11 +6,13 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <!--
+	<LangVersion>13</LangVersion>
+
+	<!--
     warning CA1416: This call site is reachable on all platforms. ... is only supported on: 'windows' 6.1 and later.
     (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1416)
     -->
-    <NoWarn>CA1416;$(NoWarn)</NoWarn>
+    <NoWarn>CA1416;IDE0007;IDE0009;IDE0011;IDE0049;IDE1006;$(NoWarn)</NoWarn>
 
     <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)\rules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
