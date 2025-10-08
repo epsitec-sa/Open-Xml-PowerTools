@@ -6,8 +6,6 @@
   </PropertyGroup>
 
   <PropertyGroup>
-	<LangVersion>13</LangVersion>
-
 	<!--
     warning CA1416: This call site is reachable on all platforms. ... is only supported on: 'windows' 6.1 and later.
     (https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1416)
