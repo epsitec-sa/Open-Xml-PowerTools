@@ -3220,9 +3220,7 @@ namespace OpenXmlPowerTools
                         var firstContentAtom = cug.DescendantContentAtoms().FirstOrDefault();
                         if (firstContentAtom == null)
                             throw new OpenXmlPowerToolsException("Internal error");
-                        var tr = firstContentAtom
-                            .AncestorElements
-                            .Reverse()
+                        var tr = Enumerable.Reverse(firstContentAtom.AncestorElements)
                             .FirstOrDefault(a => a.Name == W.tr);
 
                         if (tr == null)
@@ -3926,13 +3924,11 @@ namespace OpenXmlPowerTools
 
             // if we get to here, then countCommonAtBeginning == 0
 
-            var countCommonAtEnd = unknown
-                .ComparisonUnitArray1
-                .Reverse()
+            var countCommonAtEnd = Enumerable.Reverse (unknown
+                .ComparisonUnitArray1)
                 .Take(lengthToCompare)
-                .Zip(unknown
-                    .ComparisonUnitArray2
-                    .Reverse()
+                .Zip(Enumerable.Reverse (unknown
+                    .ComparisonUnitArray2)
                     .Take(lengthToCompare),
                     (pu1, pu2) =>
                     {
@@ -3951,9 +3947,8 @@ namespace OpenXmlPowerTools
                 if (countCommonAtEnd <= 1)
                     break;
 
-                var firstCommon = unknown
-                    .ComparisonUnitArray1
-                    .Reverse()
+                var firstCommon = Enumerable.Reverse (unknown
+                    .ComparisonUnitArray1)
                     .Take(countCommonAtEnd)
                     .LastOrDefault();
 
@@ -3978,9 +3973,8 @@ namespace OpenXmlPowerTools
             bool isOnlyParagraphMark = false;
             if (countCommonAtEnd == 1)
             {
-                var firstCommon = unknown
-                    .ComparisonUnitArray1
-                    .Reverse()
+                var firstCommon = Enumerable.Reverse (unknown
+                    .ComparisonUnitArray1)
                     .Take(countCommonAtEnd)
                     .LastOrDefault();
 
@@ -4001,15 +3995,13 @@ namespace OpenXmlPowerTools
             }
             if (countCommonAtEnd == 2)
             {
-                var firstCommon = unknown
-                    .ComparisonUnitArray1
-                    .Reverse()
+                var firstCommon = Enumerable.Reverse (unknown
+                    .ComparisonUnitArray1)
                     .Take(countCommonAtEnd)
                     .LastOrDefault();
 
-                var secondCommon = unknown
-                    .ComparisonUnitArray1
-                    .Reverse()
+                var secondCommon = Enumerable.Reverse (unknown
+                    .ComparisonUnitArray1)
                     .Take(countCommonAtEnd)
                     .FirstOrDefault();
 
@@ -4051,9 +4043,8 @@ namespace OpenXmlPowerTools
                 int remainingInLeftParagraph = 0;
                 int remainingInRightParagraph = 0;
 
-                var commonEndSeq = unknown
-                    .ComparisonUnitArray1
-                    .Reverse()
+                var commonEndSeq = Enumerable.Reverse (unknown
+                    .ComparisonUnitArray1)
                     .Take(countCommonAtEnd)
                     .Reverse()
                     .ToList();
@@ -4070,9 +4061,8 @@ namespace OpenXmlPowerTools
                         return firstComparisonUnitAtom.ContentElement.Name == W.pPr;
                     }))
                     {
-                        remainingInLeftParagraph = unknown
-                        .ComparisonUnitArray1
-                        .Reverse()
+                        remainingInLeftParagraph = Enumerable.Reverse (unknown
+                        .ComparisonUnitArray1)
                         .Skip(countCommonAtEnd)
                         .TakeWhile(cu =>
                         {
@@ -4084,9 +4074,8 @@ namespace OpenXmlPowerTools
                             return firstComparisonUnitAtom.ContentElement.Name != W.pPr;
                         })
                         .Count();
-                        remainingInRightParagraph = unknown
-                            .ComparisonUnitArray2
-                            .Reverse()
+                        remainingInRightParagraph = Enumerable.Reverse (unknown
+                            .ComparisonUnitArray2)
                             .Skip(countCommonAtEnd)
                             .TakeWhile(cu =>
                             {
@@ -6287,17 +6276,15 @@ namespace OpenXmlPowerTools
             var firstContentAtom1 = tblGroup1.DescendantContentAtoms().FirstOrDefault();
             if (firstContentAtom1 == null)
                 throw new OpenXmlPowerToolsException("Internal error");
-            var tblElement1 = firstContentAtom1
-                .AncestorElements
-                .Reverse()
+            var tblElement1 = Enumerable.Reverse (firstContentAtom1
+                .AncestorElements)
                 .FirstOrDefault(a => a.Name == W.tbl);
 
             var firstContentAtom2 = tblGroup2.DescendantContentAtoms().FirstOrDefault();
             if (firstContentAtom2 == null)
                 throw new OpenXmlPowerToolsException("Internal error");
-            var tblElement2 = firstContentAtom2
-                .AncestorElements
-                .Reverse()
+            var tblElement2 = Enumerable.Reverse (firstContentAtom2
+                .AncestorElements)
                 .FirstOrDefault(a => a.Name == W.tbl);
 
             var leftContainsMerged = tblElement1
