@@ -1,0 +1,7 @@
+<Project>
+  <PropertyGroup>
+    <TargetFrameworks Condition="'$(TargetFrameworks)' == ''">netstandard2.0</TargetFrameworks>
+  </PropertyGroup>
+
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('$(MSBuildThisFile)', '$(MSBuildThisFileDirectory)../'))" />
+</Project>
