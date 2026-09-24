@@ -1,0 +1,9 @@
+[
+  {
+    "SourceBranch": "wip/rv@tfm-babouchka",
+    "TargetBranch": "master",
+    "CreateMergeRequest": false,
+    "CreatedAt": "2026-09-24T16:21:43.3519317+02:00",
+    "Author": "Michael Walz"
+  }
+]
